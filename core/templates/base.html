@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    {% include 'connections/_link_css.html' %}
+
+
+</head>
+<body>
+<!-- Spinner Start -->
+{% include 'components/_spinner.html' %}
+<!-- Spinner End -->
+
+
+<!-- Navbar Start -->
+{% include 'components/_navbar.html' %}
+<!-- Navbar End -->
+
+
+{% block content %}
+{% endblock content %}
+
+
+{% include 'connections/_script_js.html' %}
+
+<!-- Footer Start -->
+{% include 'components/_footer.html' %}
+<!-- Footer End -->
+</body>
+</html>

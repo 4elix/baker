@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+    <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+        <h1 class="text-primary m-0">Barker</h1>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto p-4 p-lg-0">
+            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'home' %} active {% endif %}">
+                <i class="bi bi-house-door-fill pe-2"></i>Главная страница
+            </a>
+            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'shop' %} active {% endif %}">
+                <i class="bi bi-shop pe-2"></i>Продукты
+            </a>
+            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'team' %} active {% endif %}">
+                <i class="bi bi-person-bounding-box pe-2"></i>Команда
+            </a>
+            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'send_gmail' %} active {% endif %}">
+                <i class="bi bi-send-fill pe-2"></i>Контакт
+            </a>
+            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'card' %} active {% endif %}">
+                <i class="bi bi-cart-fill pe-2"></i>Корзина
+            </a>
+            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'account' %} active {% endif %}">
+                <i class="bi bi-person-vcard-fill pe-2"></i>Аккаунт
+            </a>
+            <a href="{% url 'index_path' %}" class="nav-item nav-link">
+                <i class="bi bi-person-fill-x pe-2"></i>Выйти из аккаунта
+            </a>
+        </div>
+        <div class=" d-none d-lg-flex">
+            <div class="flex-shrink-0 btn-lg-square border border-light rounded-circle">
+                <i class="fa fa-phone text-primary"></i>
+            </div>
+            <div class="ps-3">
+                <small class="text-primary mb-0">Позвоните нам</small>
+                <p class="text-light fs-5 mb-0">+998 99 999 99 99</p>
+            </div>
+        </div>
+    </div>
+</nav>
