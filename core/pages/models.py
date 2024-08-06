@@ -52,17 +52,17 @@ class ProductGallery(models.Model):
 
 class Worker(models.Model):
     CHOICES_POSITION = [
-        ('с', 'стажер'),
-        ('к', 'кондитер'),
-        ('п', 'пекарь'),
-        ('гп', 'главный пекарь')
+        ('с', 'Стажер'),
+        ('к', 'Кондитер'),
+        ('п', 'Пекарь'),
+        ('гп', 'Главный пекарь')
     ]
     full_name = models.CharField(max_length=255, verbose_name='ФИО работника')
     years_experience = models.IntegerField(default=0, verbose_name='Годы опыта')
     image = models.ImageField(upload_to='image/team/', verbose_name='Фото работника')
-    position = models.CharField(max_length=2, choices=CHOICES_POSITION, default='c')
+    position = models.CharField(max_length=2, choices=CHOICES_POSITION, default='c', verbose_name='Должность')
     facebook = models.CharField(max_length=200, verbose_name='Ссылка на facebook')
-    twitter = models.CharField(max_length=200, verbose_name='Ссылка на twitter')
+    twitter_x = models.CharField(max_length=200, verbose_name='Ссылка на twitter')
     instagram = models.CharField(max_length=200, verbose_name='Ссылка на instagram')
 
     def __str__(self):

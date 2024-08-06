@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block content %}
+
+{% include 'pages_component/_header.html' %}
+
+<div class="container-xxl py-3">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="text-primary text-uppercase mb-2">// Наша команда</p>
+            <h1 class="display-6 mb-4">Мы Очень Профессионально Относимся к Своим Навыкам</h1>
+        </div>
+        <div class="row g-4">
+            {% for worker in worker_experienced %}
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                <div class="team-item text-center rounded overflow-hidden">
+                    <img class="img-fluid" src="{{ worker.image.url }}" alt="">
+                    <div class="team-text">
+                        <div class="team-title">
+                            <h5>{{ worker.full_name }}</h5>
+                            <span>Стаж: {{ worker.years_experience }}</span>
+                            <span>Должность: {{ worker.get_position_display }}</span>
+                        </div>
+                        <div class="team-social">
+                            <a class="btn btn-square btn-light rounded-circle" href="{{ worker.facebook }}">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="btn btn-square btn-light rounded-circle" href="{{ worker.twitter_x }}">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="btn btn-square btn-light rounded-circle" href="{{ worker.instagram }}">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <div class="text-center mx-auto mb-5 mt-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="text-primary text-uppercase mb-2">// Наша команда Стажеров</p>
+            <h6 class="display-6 mb-4">Мы Очень Хотим Стать Профессионально Данного Дела</h6>
+        </div>
+        <div class="row g-4">
+            {% for worker_i in worker_intern %}
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                <div class="team-item text-center rounded overflow-hidden">
+                    <img class="img-fluid" src="{{ worker_i.image.url }}" style="width: 300px;" alt="">
+                    <div class="team-text">
+                        <div class="team-title">
+                            <h5>{{ worker_i.full_name }}</h5>
+                            <span>Должность: {{ worker_i.get_position_display }}</span>
+                        </div>
+                        <div class="team-social">
+                            <a class="btn btn-square btn-light rounded-circle" href="{{ worker_i.facebook }}">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="btn btn-square btn-light rounded-circle" href="{{ worker_i.twitter_x }}">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="btn btn-square btn-light rounded-circle" href="{{ worker_i.instagram }}">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

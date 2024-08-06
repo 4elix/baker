@@ -1,0 +1,23 @@
+{% load pages_simple_tag %}
+
+<div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center pt-5 pb-3">
+        <h1 class="display-4 text-white animated slideInDown mb-3">{{ title_header }}</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            {% get_path_page request.path as path %}
+            <ol class="breadcrumb justify-content-center mb-0">
+                {% for p in path %}
+
+                {% if forloop.first %}
+                <li class="breadcrumb-item"><a class="text-white" href="#">{{ p }}</a></li>
+                {% elif forloop.last %}
+                <li class="breadcrumb-item text-primary active" aria-current="page">{{ p }}</li>
+                {% else %}
+                <li class="breadcrumb-item"><a class="text-white" href="#">{{ p }}</a></li>
+                {% endif %}
+
+                {% endfor %}
+            </ol>
+        </nav>
+    </div>
+</div>

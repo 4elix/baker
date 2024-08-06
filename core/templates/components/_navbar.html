@@ -10,10 +10,10 @@
             <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'home' %} active {% endif %}">
                 <i class="bi bi-house-door-fill pe-2"></i>Главная страница
             </a>
-            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'shop' %} active {% endif %}">
+            <a href="{% url 'product_list_path' %}" class="nav-item nav-link {% if active == 'shop' %} active {% endif %}">
                 <i class="bi bi-shop pe-2"></i>Продукты
             </a>
-            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'team' %} active {% endif %}">
+            <a href="{% url 'team_path' %}" class="nav-item nav-link {% if active == 'team' %} active {% endif %}">
                 <i class="bi bi-person-bounding-box pe-2"></i>Команда
             </a>
             <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'send_gmail' %} active {% endif %}">

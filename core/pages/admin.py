@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Categories, ProductGallery, Products
-
+from .models import Categories, ProductGallery, Products, Worker
 
 
 @admin.register(Categories)
@@ -34,5 +33,20 @@ class ProductsAdmin(admin.ModelAdmin):
     def image(self, obj):
         try:
             return format_html(f'<img src="{obj.get_first_image()}" width=80>')
+        except:
+            return '-'
+
+
+@admin.register(Worker)
+class WorkerAdmin(admin.ModelAdmin):
+    list_display = ['pk', 'full_name', 'years_experience', 'position', 'photo']
+    list_display_links = ['pk', 'full_name']
+    ordering = ['pk']
+    search_fields = ['full_name']
+
+    @admin.action(description='Фото работника')
+    def photo(self, obj):
+        try:
+            return format_html(f'<img src="{obj.image.url}" width=80>')
         except:
             return '-'
