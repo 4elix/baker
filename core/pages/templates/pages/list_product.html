@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load pages_simple_tag %}
+
 
 {% block title %}
 {{ title }}
@@ -26,30 +28,71 @@
             </div>
         </div>
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="text-primary text-uppercase mb-2">// Barker Категории</p>
+            {% get_categories as categories %}
+            <div class="d-flex justify-content-around mb-5">
+                <a href="{% url 'product_list_path' %}">Все категории</a>
+                {% for category in categories %}
+                <a href="{% url 'show_category_path' category.name %}">{{ category }}</a>
+                {% endfor %}
+            </div>
+
             <p class="text-primary text-uppercase mb-2">// Barker Продукты</p>
         </div>
         <div class="row g-4">
             {% for product in products %}
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+            <div class="col-lg-5 col-md-6 wow fadeInUp mx-auto" data-wow-delay="0.{{ forloop.counter }}s">
                 <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
                     <div class="text-center p-4">
                         <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">
-                            ${{ product.price }}
+                            {{ product.price }}
                         </div>
                         <h3 class="mb-3">{{ product.title }}</h3>
                         <span>{{ product.description }}</span>
                     </div>
                     <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="{{ product.get_first_image }}" alt="">
+                        <img class="img-fluid p-3" src="{{ product.get_first_image }}" alt="">
                         <div class="product-overlay">
-                            <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i
-                                    class="fa fa-eye text-primary"></i></a>
+                            <a class="btn btn-lg-square btn-outline-light rounded-circle"
+                               href="{{ product.get_absolute_url }}">
+                                <i class="fa fa-eye text-primary"></i>
+                            </a>
+                            <a class="btn btn-lg-square btn-outline-light rounded-circle ms-2"
+                               href="{{ product.get_absolute_url }}">
+                                <i class="bi bi-cart-plus-fill text-primary"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
+
+
+        {% if products %}
+        <div class="d-flex justify-content-center mt-5">
+            <div class="d-flex justify-content-between">
+                {% for p in page_obj.paginator.page_range %}
+                {% if p == page_obj.number %}
+                <a class="custom-page-link-active" href="?page={{ p }}">
+                    {{ p }}
+                </a>
+                {% else %}
+                <a class="custom-page-link" href="?page={{ p }}">
+                    {{ p }}
+                </a>
+                {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <a class="custom-page-link" href="?page={{ page_obj.next_page_number }}"
+                   aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

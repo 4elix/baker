@@ -45,11 +45,20 @@ class ListProductPages(ListView):
 
 class ShowProductByCategoryId(ListProductPages):
     def get_queryset(self):
-        product = Products.objects.filter(category_id=self.kwargs['cat_id'])
+        cat_id = Categories.objects.get(name=self.kwargs['category_name'])
+        product = Products.objects.filter(category_id=cat_id)
         return product
 
-    def get_context_object_name(self, object_list):
-        context = super().get_context_object_name()
-        category = Categories.objects.get(pk=self.kwargs['pk'])
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data()
+        category = Categories.objects.get(name=self.kwargs['category_name'])
         context['title'] = f'Barker Категория: {category.name}'
         return context
+
+
+def detail_view(request, slug_path):
+    product = get_object_or_404(Products, slug=slug_path)
+    context = {
+        'product': product
+    }
+    return render(request, 'pages/detail.html', context)

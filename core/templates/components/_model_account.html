@@ -1,0 +1,43 @@
+<div class="modal fade" id="exampleModalLogic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border: 2px solid #EAA636">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLogicLabel" style="color: #EAA636;">Ваше действие ?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-around">
+                    <div class="">
+                        <i class="bi bi-person-fill-up pe-2 fs-5" style="color: #7e5507;"></i>
+                        <a href="{% url 'login_path' %}">Войти</a>
+                    </div>
+                    <div class="">
+                        <i class="bi bi-person-fill-add pe-2 fs-5" style="color: #7e5507;"></i>
+                        <a href="{% url 'register_path' %}">Зарегистрироваться</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border: 3px solid #EAA636">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLogoutLabel">Вы хотите выйти из аккаунта</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-around">
+                    <div class="">
+                        <a class="btn btn-outline-warning" href="{% url 'logout_path' %}">Да</a>
+                    </div>
+                    <div class="">
+                        <a class="btn btn-outline-warning" data-bs-dismiss="modal" aria-label="Close" href="#">Нет</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

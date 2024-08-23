@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 class Categories(models.Model):
@@ -34,10 +35,13 @@ class Products(models.Model):
 
     def get_list_image(self):
         try:
-            photo = self.product_iamge.all()
+            photo = self.product_image.all()
             return photo
         except:
             return '-'
+
+    def get_absolute_url(self):
+        return reverse('detail_path', kwargs={'slug_path': self.slug})
 
     class Meta:
         ordering = ['pk']

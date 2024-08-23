@@ -10,24 +10,33 @@
             <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'home' %} active {% endif %}">
                 <i class="bi bi-house-door-fill pe-2"></i>Главная страница
             </a>
-            <a href="{% url 'product_list_path' %}" class="nav-item nav-link {% if active == 'shop' %} active {% endif %}">
+            <a href="{% url 'product_list_path' %}"
+               class="nav-item nav-link {% if active == 'shop' %} active {% endif %}">
                 <i class="bi bi-shop pe-2"></i>Продукты
             </a>
             <a href="{% url 'team_path' %}" class="nav-item nav-link {% if active == 'team' %} active {% endif %}">
                 <i class="bi bi-person-bounding-box pe-2"></i>Команда
             </a>
-            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'send_gmail' %} active {% endif %}">
+            <a href="{% url 'index_path' %}"
+               class="nav-item nav-link {% if active == 'send_gmail' %} active {% endif %}">
                 <i class="bi bi-send-fill pe-2"></i>Контакт
             </a>
             <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'card' %} active {% endif %}">
                 <i class="bi bi-cart-fill pe-2"></i>Корзина
             </a>
-            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'account' %} active {% endif %}">
-                <i class="bi bi-person-vcard-fill pe-2"></i>Аккаунт
+            {% if not request.user.is_authenticated %}
+            <a href="{% url 'index_path' %}" class="nav-item nav-link {% if active == 'account' %} active {% endif %}"
+               data-bs-toggle="modal" data-bs-target="#exampleModalLogic">
+                <i class="bi bi-person-vcard-fill"></i>
+                Аккаунт
             </a>
-            <a href="{% url 'index_path' %}" class="nav-item nav-link">
-                <i class="bi bi-person-fill-x pe-2"></i>Выйти из аккаунта
+            {% else %}
+            <a href="{% url 'index_path' %}" class="nav-item nav-link" data-bs-toggle="modal"
+               data-bs-target="#exampleModalLogout">
+                <i class="bi bi-person-fill-x"></i>
+                Выйти из аккаунта
             </a>
+            {% endif %}
         </div>
         <div class=" d-none d-lg-flex">
             <div class="flex-shrink-0 btn-lg-square border border-light rounded-circle">
